@@ -1,0 +1,466 @@
+/* <style> */
+/* ================================================================
+   RECETARIO SIN TACC — Estilos Rediseñados
+   ================================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@400;600;700;800&family=Dancing+Script:wght@700&display=swap');
+
+/* ── Variables globales ────────────────────────────────────────── */
+:root {
+  --ease-hover:  cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-return: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+  --color-bg:         #FFA35A;
+  --color-bg-dark:    #e8803a;
+  --color-bg-light:   #ffbe8a;
+  --color-parchment:  #fff8ee;
+  --color-titulo:     #7a2d00;
+  --color-texto:      #4a2800;
+  --color-accent:     #c94f00;
+  --color-card-bg:    #fff3e6;
+  --color-gold:       #b8730a;
+  --color-leaf:       #4a7c3f;
+
+  --font-serif:   'Lora', Georgia, serif;
+  --font-sans:    'Nunito', sans-serif;
+  --font-display: 'Dancing Script', cursive;
+
+  --shadow-sm: 0 2px 8px rgba(100,40,0,0.15);
+  --shadow-md: 0 6px 24px rgba(100,40,0,0.2);
+  --shadow-lg: 0 16px 48px rgba(100,40,0,0.25);
+}
+
+/* ── Reset y base ──────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 500;
+  background-color: var(--color-bg);
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(255,190,138,0.6) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 90%, rgba(200,90,0,0.3) 0%, transparent 50%),
+    /* url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c94f00' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  margin: 0;
+}
+
+p { line-height: 1.6; }
+
+/* ── Logo centrado ─────────────────────────────────────────────── */
+.contenedor-logo {
+  text-align: center;
+  width: 100%;
+  padding: 28px 0 10px;
+}
+
+..logo-responsivo {
+  /* Controla el tamaño general aquí */
+  width: 30%;          /* Antes 18%, súbelo a 30% o 40% */
+  max-width: 350px;    /* Sube este límite para que el logo pueda crecer */
+  
+  /* Mantiene la proporción y calidad */
+  height: auto;
+  min-width: 120px;    /* Un mínimo un poco más generoso */
+  filter: drop-shadow(0 4px 12px rgba(100,40,0,0.25));
+}
+
+@media (max-width: 560px) {
+  .logo-responsivo { 
+    width: 60%; /* Ajusta según prefieras en pantallas pequeñas */
+  }
+}
+
+/* ── Título principal ──────────────────────────────────────────── */
+.titulo-principal {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3.5vw, 38px);
+  font-weight: 1000px;
+  color: var(--color-titulo);
+  text-shadow: 0 3px 0 rgba(255,255,255,0.5), 0 3px 10px rgba(0,0,0,0.2);
+  padding: 10px 40px 28px;
+  letter-spacing: 0.01em;
+  position: relative;
+}
+
+.titulo-principal::after {
+  content: '';
+  display: block;
+  margin: 12px auto 0;
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-titulo), transparent);
+  border-radius: 2px;
+}
+
+/* ── Layout de 3 columnas ──────────────────────────────────────── */
+.page-layout {
+  display: flex;
+  gap: 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 12px;
+  align-items: flex-start;
+}
+
+/* ── Sidebar (columnas laterales) ──────────────────────────────── */
+.sidebar {
+  width: 20%;
+  padding: 10px 8px;
+  position: sticky;
+  top: 20px;
+}
+
+.sidebar-card {
+  background: var(--color-parchment);
+  border-radius: 16px;
+  padding: 18px 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(184,115,10,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--color-accent), var(--color-gold));
+}
+
+.sidebar p {
+  padding: 4px 0;
+  font-size: 13px;
+  font-family: var(--font-serif);
+  line-height: 1.65;
+  color: var(--color-texto);
+}
+
+.sidebar p strong {
+  display: block;
+  font-weight: 600;
+  color: var(--color-accent);
+  margin-top: 4px;
+}
+
+.side-titulo {
+  font-family: var(--font-display) !important;
+  font-size: 20px !important;
+  font-style: normal !important;
+  font-weight: 700 !important;
+  color: var(--color-titulo) !important;
+  text-decoration: none !important;
+  text-align: left !important;
+  margin-bottom: 10px !important;
+  display: block;
+}
+
+.side-titulo::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 2px;
+  background: var(--color-accent);
+  margin-top: 5px;
+  border-radius: 1px;
+}
+
+/* Badge decorativo sidebar */
+.side-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-gold));
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.side-icon {
+  font-size: 22px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* ── Contenido central ─────────────────────────────────────────── */
+.main-content {
+  width: 60%;
+  padding: 0 12px;
+}
+
+/* ── Encabezado de sección ─────────────────────────────────────── */
+.section-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.section-header .kicker {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--color-titulo);
+}
+
+/* ── Grid de tarjetas ──────────────────────────────────────────── */
+.container {
+  padding: 6px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin: 0 auto;
+}
+
+/* ── Card Wrap (perspectiva 3D) ───────────────────────────────── */
+.card-wrap {
+  display: flex;
+  justify-content: center;
+  transform: perspective(2000px);
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.card-wrap:hover .card-info {
+  transform: translateY(0);
+}
+
+.card-wrap:hover .card-info p {
+  opacity: 1;
+}
+
+.card-wrap:hover .card-info,
+.card-wrap:hover .card-info p {
+  transition: 0.6s var(--ease-hover);
+}
+
+.card-wrap:hover .card-info::after {
+  transition: 0.5s var(--ease-hover);
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-wrap:hover .card-bg {
+  transition: 0.6s var(--ease-hover), opacity 1.5s var(--ease-hover);
+  opacity: 1;
+}
+
+.card-wrap:hover .card {
+  transition: 0.6s var(--ease-hover), box-shadow 1.5s var(--ease-hover);
+  box-shadow:
+    rgba(255,220,160,0.4) 0 0 20px 2px,
+    rgba(100,40,0,0.5) 0 20px 40px 0;
+}
+
+/* ── Tarjeta ───────────────────────────────────────────────────── */
+.card {
+  position: relative;
+  width: 100%;
+  max-width: 210px;
+  height: 310px;
+  background: linear-gradient(160deg, #5a3020 0%, #2a1008 100%);
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: var(--shadow-md);
+  transition: 1s var(--ease-return);
+  border: 1px solid rgba(255,200,120,0.15);
+}
+
+/* Esquinas decorativas */
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border: 1px solid rgba(255,200,120,0.12);
+  border-radius: 13px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* Número de receta */
+.card-number {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  z-index: 4;
+  font-family: var(--font-display);
+  font-size: 20px;
+  color: rgba(255,255,255,0.2); // rgba(255,200,120,0.2); // COLOR Y TRANSPARENCIA DE LOS NMEROS
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* ── Fondo de la tarjeta ───────────────────────────────────────── */
+.card-bg {
+  opacity: 0.7;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  width: calc(100% + 40px);
+  height: calc(100% + 40px);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+ // transition: 0.1s var(--ease-return), opacity 1s 0.1s var(--ease-return);
+  pointer-events: none;
+}
+
+/* ── Panel de información ──────────────────────────────────────── */
+.card-info {
+  padding: 20px 18px;
+  position: absolute;
+  bottom: 0;
+  color: #fff;
+  width: 100%;
+  transform: translateY(48%);
+  transition: 0.2s 0.6s cubic-bezier(0.215, 0.61, 0.355, 1);
+  z-index: 2;
+}
+
+.card-info p {
+  opacity: 0;
+  font-size: 12px;
+  line-height: 1.5;
+  text-shadow: rgba(0,0,0,0.9) 0 1px 4px;
+  transition: 0.6s 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+  color: rgba(255,230,200,0.95);
+  margin-top: 6px;
+}
+
+.card-info h1 {
+  font-family: var(--font-serif);
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-shadow: rgba(0,0,0,0.9) 0 2px 8px;
+  color: #fff;
+}
+
+/* Etiqueta "Sin TACC" */
+.card-info .tag {
+  display: inline-block;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-gold));
+  color: #fff;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+  opacity: 0;
+  transition: 0.6s 0.9s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.card-wrap:hover .card-info .tag {
+  opacity: 1;
+}
+
+/* Overlay degradado */
+.card-info::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, transparent 0%, rgba(30,10,0,0.92) 100%);
+  opacity: 0;
+  transform: translateY(100%);
+  transition: 0.6s var(--ease-hover);
+}
+
+/* ── Separador decorativo ──────────────────────────────────────── */
+.divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 24px 0 18px;
+  color: var(--color-titulo);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13px;
+}
+
+.divider::before,
+.divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-titulo), transparent);
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+.footer {
+  margin-top: 50px;
+  padding: 28px 20px 32px;
+  text-align: center;
+  font-family: var(--font-serif);
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  display: block;
+  width: 200px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-titulo), transparent);
+  margin: 0 auto 24px;
+}
+
+.footer-organismo {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--color-titulo);
+  letter-spacing: 0.04em;
+}
+
+.footer-dependencia {
+  font-size: 13px;
+  color: var(--color-texto);
+  margin-top: 4px;
+  font-style: italic;
+}
+
+.footer-anio {
+  font-size: 12px;
+  margin-top: 12px;
+  color: var(--color-titulo);
+  opacity: 0.6;
+  letter-spacing: 0.06em;
+}
+
+/* ── Responsive ────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .page-layout { flex-direction: column; }
+  .sidebar, .main-content { width: 100%; }
+  .sidebar { position: static; }
+  .container { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .container { grid-template-columns: 1fr; }
+  .logo-responsivo { width: 40%; }
+  .titulo-principal { padding: 10px 20px 20px; }
+}
+/* </style> */
